@@ -39,9 +39,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install Selenium and ChromeDriver
+      - name: Install dependencies
         run: |
           npm install selenium-webdriver chromedriver
+          npm install --save-dev mocha
 
       - name: Run E2E tests
         run: node e2e-tests/test.js
