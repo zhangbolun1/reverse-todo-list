@@ -43,10 +43,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install Docker and Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+          sudo apt-get install -y docker-compose
+
       - name: Start services
         run: |
           docker-compose up -d
-          sleep 15  # 等待服务启动
+          sleep 15
 
       - name: Install dependencies
         run: |
@@ -70,9 +76,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Install Docker Compose
+      - name: Install Docker and Docker Compose
         run: |
           sudo apt-get update
+          sudo apt-get install -y docker.io
           sudo apt-get install -y docker-compose
 
       - name: Build and push Docker images
