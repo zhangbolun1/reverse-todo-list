@@ -43,6 +43,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Start services
+        run: |
+          docker-compose up -d
+          sleep 15  # 等待服务启动
+
       - name: Install dependencies
         run: |
           npm install selenium-webdriver chromedriver
