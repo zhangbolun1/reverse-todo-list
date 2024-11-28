@@ -48,10 +48,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+
+      - name: Install dependencies
+
       # 安装 Selenium 和 ChromeDriver
       - name: Install Selenium and ChromeDriver
+
         run: |
           npm install selenium-webdriver chromedriver
+          npm install --save-dev mocha
 
       # 运行端到端测试
       - name: Run E2E tests
